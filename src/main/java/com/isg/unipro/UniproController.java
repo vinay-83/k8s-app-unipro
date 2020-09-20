@@ -1,5 +1,7 @@
 package com.isg.unipro;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,23 +37,35 @@ public class UniproController {
 	}
 	
 	@PostMapping("/saveInMongo")
-	public String saveInMongo(@RequestBody EmployeeModel user) {
+	public String saveInMongo(@RequestBody EmployeeModel emp) {
 		EmployeeModel um = new EmployeeModel();
-		um.setName(user.getName());
+		um.setName(emp.getName());
+		um.setEmail(emp.getEmail());
+		um.setExperience(emp.getExperience());
+		um.setDomain(emp.getDomain());
 		empRepo.insert(um);
 		return "User saved";
 	}
 	
+	@GetMapping("/getAllFromMongo")
+	public List<EmployeeModel> getAllFromMongo() {
+		return empRepo.findAll();
+	}
 	@GetMapping("/addUser/{id}/{name}")
 	public UserModel saveUser(@PathVariable Integer id, @PathVariable String name) {
 		UserModel um = new UserModel();
 		um.setName(name);
-		um.setUserId(id);
+		um.setId(id);
 		return userRepo.save(um);
 	}
 	
+	@GetMapping("getAllFromMysql")
+	public List<UserModel> getAllFromMysql(){
+		return userRepo.findAll();
+	}
+	//mongo-java-mysql-myworld.apps.okd.kpit.com
 	@GetMapping("/addEmp/{id}/{name}")
-	public EmployeeModel saveaddEmp(@PathVariable String id, @PathVariable String name) {
+	public EmployeeModel saveaddEmp(@PathVariable Integer id, @PathVariable String name) {
 		EmployeeModel um = new EmployeeModel();
 		um.setName(name);
 		um.setId(id);

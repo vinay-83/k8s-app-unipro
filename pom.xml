@@ -57,10 +57,20 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.jkube</groupId>
-				<artifactId>openshift-maven-plugin</artifactId>
-				<version>1.0.0-alpha-4</version>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>3.5.37</version>
+				<executions>
+					<execution>
+						<id>fmp</id>
+						<goals>
+							<goal>resource</goal>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 

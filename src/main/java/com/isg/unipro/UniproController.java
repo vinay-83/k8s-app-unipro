@@ -25,7 +25,7 @@ public class UniproController {
 	@GetMapping("/whoAmI")
 	public String whoAmI() {
 		System.out.println("Am from unipro version 3.0");
-		return "Am from unipro version 3.0";
+		return "Unipro test port";
 	}
 	
 	@PostMapping("/save")

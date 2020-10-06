@@ -23,8 +23,8 @@ public class UniproController {
 	
 	@GetMapping("/whoAmI")
 	public String whoAmI() {
-		System.out.println("am from unipro port");
-		return "Unipro test port";
+		System.out.println("am from unipro port 2.0");
+		return "Unipro test port 2.0";
 	}
 	
 	@PostMapping("/save")
